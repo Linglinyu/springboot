@@ -1,0 +1,51 @@
+group 'com.shanks.lyq'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+version = '1.0'
+buildDir = 'target'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "junit:junit:4.12"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-test"
+    compile "org.springframework.boot:spring-boot-starter-data-rest"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb"
+    compile "com.h2database:h2"
+    compile "commons-lang:commons-lang:2.5"
+    compile "org.apache.tomcat.embed:tomcat-embed-jasper:8.0.28"
+    compile "javax.servlet:jstl:+"
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+
+
+}
+
+jar {
+    baseName = 'servicesdk'
+    version =  '1'
+}
+
+task showRepositories << {
+    repositories.each{
+        println "repository: ${it.name} ${it.url}"
+    }
+}
